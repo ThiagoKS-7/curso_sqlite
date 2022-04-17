@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/thiago/Documentos/cursos/curso_sqlite/ex.sqlite" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1696"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="sqlite_sequence"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="ex1.sql">create table if not exists tipos_produtos (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  descricao TEXT NOT NULL
+);
+
+-- TEXT = VRCHAR, REAL = DECIMAL  E INTEGER = INT
+create table if not exists produtos (
+  id  INTEGER PRIMARY KEY AUTOINCREMENT,
+  descricao TEXT NOT NULL,
+  preco REAL NOT NULL,
+  id_tipo_produto INTEGER REFERENCES tipos_produtos(id) NOT NULL
+);
+
+-- NÃO TEM CAMPO DATA, LOGO É TEXT
+create table if not exists pacientes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome TEXT NOT NULL,
+  endereco TEXT NOT NULL,
+  bairro TEXT NOT NULL,
+  cidade TEXT NOT NULL,
+  estado TEXT NOT NULL,
+  cep TEXT NOT NULL,
+  dt_nascimento TEXT NOT NULL
+);
+
+create table if not exists professor (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  telefone INTEGER NOT NULL,
+  nome TEXT NOT NULL
+);
+
+create table if not exists turma (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  capacidade INTEGER NOT NULL,
+  id_professor INTEGER REFERENCES professor(id) NOT NULL
+);
+
+
+
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
